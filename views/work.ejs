@@ -1,0 +1,42 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To Do List</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <%- include('header.ejs') %>
+
+  <main class="main-content">
+    <h1>Work</h1>
+    <ul class="list-design">
+      <% if (locals.work) { %>
+        <% for (var i = 0; i < work.length; i++) { %>
+          <li>
+            <input type="checkbox" class="checkbox"> <!-- Call updateTaskStatus function with the task index -->
+             <%= work[i].title %>
+          </li>
+        <% } %>
+        <li>
+          <form action="/new-item-work" method="post">
+            <div class="input-wrapper">
+            <input type="text" placeholder="New Item" name="text">
+          </div>
+          <input type="submit" value="+">
+            
+          </form>
+        </li>
+      <% } %>
+    </ul>
+    
+  </main>
+
+
+
+  <%- include('footer.ejs') %>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+ <script src="js/script.js"></script>
+</body>
+</html>
